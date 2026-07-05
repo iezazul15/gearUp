@@ -15,6 +15,10 @@ if (!process.env.PORT) {
   throw new Error("PORT is not defined in the environment variables");
 }
 
+if (!process.env.NODE_ENV) {
+  throw new Error("NODE_ENV is not defined in the environment variables");
+}
+
 if (!process.env.APP_URL) {
   throw new Error("APP_URL is not defined in the environment variables");
 }
@@ -50,8 +54,9 @@ if (!process.env.JWT_REFRESH_TOKEN_EXPIRES_IN) {
 }
 
 const config = {
-  port: process.env.PORT || 8000,
   database_url: process.env.DATABASE_URL,
+  port: process.env.PORT || 8000,
+  node_env: process.env.NODE_ENV,
   app_url: process.env.APP_URL,
   bcrypt_salt_rounds: parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10,
   jwt_access_token_secret: process.env.JWT_ACCESS_TOKEN_SECRET!,
