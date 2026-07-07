@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import httpStatus from "http-status";
 import { authRouter } from "../modules/auth/auth.route";
+import { categoryRouter } from "../modules/category/category.route";
 import ApiError from "../utils/ApiError";
 import ApiResponse from "../utils/ApiResponse";
 import asyncHandler from "../utils/asyncHandler";
@@ -19,6 +20,7 @@ router.get(
  * Other Routes
  */
 router.use("/auth", authRouter);
+router.use("/categories", categoryRouter);
 
 // Handle 404 errors for undefined routes
 router.use(
