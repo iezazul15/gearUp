@@ -96,6 +96,26 @@ const loginUser = async (loginUserPayload: ILoginUserPayload) => {
   };
 };
 
+const getProfile = async (userId: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    omit: {
+      password: true,
+    },
+    include: {
+      profile: true,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+
+  return user;
+};
+
 const refreshToken = async (refreshToken: string) => {
   const verifiedToken = jwtUtils.verifyToken(
     refreshToken,
@@ -151,5 +171,6 @@ const refreshToken = async (refreshToken: string) => {
 export const authService = {
   createUser,
   loginUser,
+  getProfile,
   refreshToken,
 };
