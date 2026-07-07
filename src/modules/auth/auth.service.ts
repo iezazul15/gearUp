@@ -140,6 +140,15 @@ const updateProfile = async (
   }
 
   if (updateData.email) {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        email: updateData.email,
+      },
+    });
+
+    if (existingUser && existingUser.id !== userId) {
+      throw new ApiError(httpStatus.BAD_REQUEST, "Email already in use");
+    }
     userData.email = updateData.email;
   }
 
