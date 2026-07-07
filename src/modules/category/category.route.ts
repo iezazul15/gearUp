@@ -12,21 +12,21 @@ router.get("/:id", categoryController.getCategoryById);
 router.post(
   "/",
   authenticate,
-  authorize([Role.ADMIN]),
+  authorize(Role.ADMIN),
   categoryController.createCategory,
 );
 
 router.patch(
   "/:id",
   authenticate,
-  authorize([Role.ADMIN]),
+  authorize(Role.ADMIN),
   categoryController.updateCategory,
 );
 
 router.delete(
   "/:id",
   authenticate,
-  authorize([Role.ADMIN]),
+  authorize(Role.ADMIN),
   categoryController.deleteCategory,
 );
 
