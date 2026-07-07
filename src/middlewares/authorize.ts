@@ -3,7 +3,8 @@ import httpStatus from "http-status";
 import ApiError from "../utils/ApiError";
 
 const authorize =
-  (roles: string[]) => (req: Request, res: Response, next: NextFunction) => {
+  (...roles: string[]) =>
+  (req: Request, res: Response, next: NextFunction) => {
     const userRole = req.user?.role;
 
     if (!userRole || !roles.includes(userRole)) {
