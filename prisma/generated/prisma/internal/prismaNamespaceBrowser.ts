@@ -161,6 +161,7 @@ export const ReviewScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
   gearItemId: 'gearItemId',
+  rentalOrderId: 'rentalOrderId',
   rating: 'rating',
   comment: 'comment',
   createdAt: 'createdAt'

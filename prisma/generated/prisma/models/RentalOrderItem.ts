@@ -236,6 +236,7 @@ export type RentalOrderItemOrderByWithRelationInput = {
 
 export type RentalOrderItemWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  rentalOrderId_gearItemId?: Prisma.RentalOrderItemRentalOrderIdGearItemIdCompoundUniqueInput
   AND?: Prisma.RentalOrderItemWhereInput | Prisma.RentalOrderItemWhereInput[]
   OR?: Prisma.RentalOrderItemWhereInput[]
   NOT?: Prisma.RentalOrderItemWhereInput | Prisma.RentalOrderItemWhereInput[]
@@ -245,7 +246,7 @@ export type RentalOrderItemWhereUniqueInput = Prisma.AtLeast<{
   pricePerDay?: Prisma.FloatFilter<"RentalOrderItem"> | number
   rentalOrder?: Prisma.XOR<Prisma.RentalOrderScalarRelationFilter, Prisma.RentalOrderWhereInput>
   gearItem?: Prisma.XOR<Prisma.GearItemScalarRelationFilter, Prisma.GearItemWhereInput>
-}, "id">
+}, "id" | "rentalOrderId_gearItemId">
 
 export type RentalOrderItemOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -333,6 +334,11 @@ export type RentalOrderItemListRelationFilter = {
 
 export type RentalOrderItemOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type RentalOrderItemRentalOrderIdGearItemIdCompoundUniqueInput = {
+  rentalOrderId: string
+  gearItemId: string
 }
 
 export type RentalOrderItemCountOrderByAggregateInput = {

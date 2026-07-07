@@ -1,22 +1,24 @@
 model GearItem {
-  id            String   @id @default(uuid())
-  name          String
-  description   String?
-  brand         String?
-  pricePerDay   Float
-  stock         Int      @default(0)
-  isAvailable   Boolean  @default(true)
-  imageUrl      String?
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  brand       String?
+  pricePerDay Float
+  stock       Int     @default(1)
+  isAvailable Boolean @default(true)
+  imageUrl    String?
 
-  categoryId    String
-  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
 
-  providerId    String
-  provider      User     @relation(fields: [providerId], references: [id])
+  providerId String
+  provider   User   @relation(fields: [providerId], references: [id])
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  rentalItems   RentalOrderItem[]
-  reviews       Review[]
+  rentalItems RentalOrderItem[]
+  reviews     Review[]
+
+  @@map("gear_items")
 }

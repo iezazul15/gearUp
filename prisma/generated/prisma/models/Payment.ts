@@ -316,7 +316,7 @@ export type PaymentCreateInput = {
   id?: string
   transactionId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
@@ -329,7 +329,7 @@ export type PaymentUncheckedCreateInput = {
   transactionId: string
   rentalOrderId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
@@ -365,7 +365,7 @@ export type PaymentCreateManyInput = {
   transactionId: string
   rentalOrderId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
@@ -507,7 +507,7 @@ export type PaymentCreateWithoutRentalOrderInput = {
   id?: string
   transactionId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
@@ -518,7 +518,7 @@ export type PaymentUncheckedCreateWithoutRentalOrderInput = {
   id?: string
   transactionId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
@@ -570,7 +570,7 @@ export type PaymentCreateManyRentalOrderInput = {
   id?: string
   transactionId: string
   amount: number
-  method: $Enums.PaymentProvider
+  method?: $Enums.PaymentProvider
   status?: $Enums.PaymentStatus
   paidAt?: Date | string | null
   createdAt?: Date | string
