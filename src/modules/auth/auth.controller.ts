@@ -42,6 +42,13 @@ const getMe = asyncHandler(async (req: Request, res: Response) => {
     .json(new ApiResponse(true, "User Profile fetched successfully", user));
 });
 
+const updateMe = asyncHandler(async (req: Request, res: Response) => {
+  const user = await authService.updateProfile(req.user.id, req.body);
+  return res
+    .status(httpStatus.OK)
+    .json(new ApiResponse(true, "User Profile updated successfully", user));
+});
+
 const refreshToken = asyncHandler(async (req: Request, res: Response) => {
   const refreshToken = req.cookies.refreshToken;
   const { accessToken, refreshToken: newRefreshToken } =
@@ -73,5 +80,6 @@ export const authController = {
   register,
   login,
   getMe,
+  updateMe,
   refreshToken,
 };

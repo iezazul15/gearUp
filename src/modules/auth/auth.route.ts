@@ -9,6 +9,8 @@ router.post("/login", authController.login);
 
 router.get("/me", authController.getMe);
 
+router.patch("/me", authController.updateMe);
+
 router.post("/refresh-token", authController.refreshToken);
 
 export const authRouter = router;

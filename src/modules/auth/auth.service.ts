@@ -4,7 +4,11 @@ import config from "../../config";
 import { prisma } from "../../lib/prisma";
 import ApiError from "../../utils/ApiError";
 import { jwtUtils } from "../../utils/jwt";
-import { ICreateUserPayload, ILoginUserPayload } from "./auth.interface";
+import {
+  ICreateUserPayload,
+  ILoginUserPayload,
+  IUpdateProfilePayload,
+} from "./auth.interface";
 
 const createUser = async (createUserPayload: ICreateUserPayload) => {
   const { name, email, password } = createUserPayload;
@@ -116,6 +120,36 @@ const getProfile = async (userId: string) => {
   return user;
 };
 
+const updateProfile = async (
+  userId: string,
+  updateData: IUpdateProfilePayload,
+) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  }
+
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: updateData,
+    omit: {
+      password: true,
+    },
+    include: {
+      profile: true,
+    },
+  });
+
+  return updatedUser;
+};
+
 const refreshToken = async (refreshToken: string) => {
   const verifiedToken = jwtUtils.verifyToken(
     refreshToken,
@@ -172,5 +206,6 @@ export const authService = {
   createUser,
   loginUser,
   getProfile,
+  updateProfile,
   refreshToken,
 };
