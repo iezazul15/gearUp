@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs";
 import httpStatus from "http-status";
+import { Prisma } from "../../../prisma/generated/prisma/client";
+import { Role } from "../../../prisma/generated/prisma/enums";
 import config from "../../config";
 import { prisma } from "../../lib/prisma";
 import ApiError from "../../utils/ApiError";
@@ -23,13 +25,20 @@ const createUser = async (createUserPayload: ICreateUserPayload) => {
     throw new ApiError(400, "User with this email already exists");
   }
 
+  if (createUserPayload.role.toLowerCase() === Role.ADMIN.toLowerCase()) {
+    throw new ApiError(400, "Cannot create user with ADMIN role");
+  }
+
   const hashedPassword = await bcrypt.hash(password, config.bcrypt_salt_rounds);
+
+  const role = Role[createUserPayload.role.toUpperCase() as keyof typeof Role];
 
   const user = await prisma.user.create({
     data: {
       name,
       email,
       password: hashedPassword,
+      role,
       profile: {
         create: {},
       },
@@ -68,7 +77,7 @@ const loginUser = async (loginUserPayload: ILoginUserPayload) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      activeStatus: user.activeStatus,
+      activeStatus: user.status,
       roles: user.role,
     },
     config.jwt_access_token_secret,
@@ -80,7 +89,7 @@ const loginUser = async (loginUserPayload: ILoginUserPayload) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      activeStatus: user.activeStatus,
+      activeStatus: user.status,
       roles: user.role,
     },
     config.jwt_refresh_token_secret,
@@ -124,21 +133,53 @@ const updateProfile = async (
   userId: string,
   updateData: IUpdateProfilePayload,
 ) => {
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userId,
-    },
-  });
+  const userData: Prisma.UserUpdateInput = {};
 
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+  if (updateData.name) {
+    userData.name = updateData.name;
+  }
+
+  if (updateData.email) {
+    userData.email = updateData.email;
+  }
+
+  if (updateData.password) {
+    const hashedPassword = await bcrypt.hash(
+      updateData.password,
+      config.bcrypt_salt_rounds,
+    );
+    userData.password = hashedPassword;
+  }
+
+  const profileData: Prisma.ProfileUpdateInput = {};
+
+  if (updateData.phone) {
+    profileData.phone = updateData.phone;
+  }
+
+  if (updateData.address) {
+    profileData.address = updateData.address;
+  }
+
+  if (updateData.avatarUrl) {
+    profileData.avatarUrl = updateData.avatarUrl;
+  }
+
+  if (updateData.bio) {
+    profileData.bio = updateData.bio;
   }
 
   const updatedUser = await prisma.user.update({
     where: {
       id: userId,
     },
-    data: updateData,
+    data: {
+      ...userData,
+      profile:
+        Object.keys(profileData).length > 0
+          ? { update: profileData }
+          : undefined,
+    },
     omit: {
       password: true,
     },
@@ -168,8 +209,8 @@ const refreshToken = async (refreshToken: string) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, "User not found");
   }
 
-  if (user.activeStatus === "BLOCKED") {
-    throw new ApiError(httpStatus.UNAUTHORIZED, "User is blocked");
+  if (user.status === "SUSPENDED") {
+    throw new ApiError(httpStatus.UNAUTHORIZED, "User is suspended");
   }
 
   const newAccessToken = jwtUtils.createToken(
@@ -177,7 +218,7 @@ const refreshToken = async (refreshToken: string) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      activeStatus: user.activeStatus,
+      activeStatus: user.status,
       roles: user.role,
     },
     config.jwt_access_token_secret,
@@ -189,7 +230,7 @@ const refreshToken = async (refreshToken: string) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      activeStatus: user.activeStatus,
+      activeStatus: user.status,
       roles: user.role,
     },
     config.jwt_refresh_token_secret,
