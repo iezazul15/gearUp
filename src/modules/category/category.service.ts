@@ -14,6 +14,10 @@ const getCategories = async () => {
   });
 };
 
+const getAllCategoriesForAdmin = async () => {
+  return getCategories();
+};
+
 const getCategoryById = async (id: string) => {
   const category = await prisma.category.findUnique({
     where: {
@@ -104,6 +108,7 @@ const deleteCategory = async (id: string) => {
 
 export const categoryService = {
   getCategories,
+  getAllCategoriesForAdmin,
   getCategoryById,
   createCategory,
   updateCategory,

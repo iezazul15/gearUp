@@ -9,6 +9,13 @@ const router: Router = Router();
 router.get("/", categoryController.getCategories);
 router.get("/:id", categoryController.getCategoryById);
 
+router.get(
+  "/admin/all",
+  authenticate,
+  authorize(Role.ADMIN),
+  categoryController.getAllCategoriesForAdmin,
+);
+
 router.post(
   "/",
   authenticate,

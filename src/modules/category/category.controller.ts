@@ -12,6 +12,16 @@ const getCategories = asyncHandler(async (req: Request, res: Response) => {
     .json(new ApiResponse(true, "Categories fetched successfully", categories));
 });
 
+const getAllCategoriesForAdmin = asyncHandler(
+  async (req: Request, res: Response) => {
+    const categories = await categoryService.getAllCategoriesForAdmin();
+
+    return res
+      .status(httpStatus.OK)
+      .json(new ApiResponse(true, "Categories fetched successfully", categories));
+  },
+);
+
 const getCategoryById = asyncHandler(async (req: Request, res: Response) => {
   const category = await categoryService.getCategoryById(
     req.params.id as string,
@@ -51,6 +61,7 @@ const deleteCategory = asyncHandler(async (req: Request, res: Response) => {
 
 export const categoryController = {
   getCategories,
+  getAllCategoriesForAdmin,
   getCategoryById,
   createCategory,
   updateCategory,
