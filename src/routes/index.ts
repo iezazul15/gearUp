@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import httpStatus from "http-status";
+import { adminRouter } from "../modules/admin/admin.route";
 import { authRouter } from "../modules/auth/auth.route";
 import { categoryRouter } from "../modules/category/category.route";
 import { gearRouter } from "../modules/gear/gear.route";
@@ -24,6 +25,7 @@ router.get(
  * Other Routes
  */
 router.use("/auth", authRouter);
+router.use("/admin", adminRouter);
 router.use("/categories", categoryRouter);
 router.use("/gear", gearRouter);
 router.use("/provider", providerRouter);
