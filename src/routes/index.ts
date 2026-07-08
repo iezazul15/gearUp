@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import { authRouter } from "../modules/auth/auth.route";
 import { categoryRouter } from "../modules/category/category.route";
 import { gearRouter } from "../modules/gear/gear.route";
+import { providerRouter } from "../modules/provider/provider.route";
 import { rentalOrderRouter } from "../modules/rentalOrder/rentalOrder.route";
 import { reviewRouter } from "../modules/review/review.route";
 import ApiError from "../utils/ApiError";
@@ -25,6 +26,7 @@ router.get(
 router.use("/auth", authRouter);
 router.use("/categories", categoryRouter);
 router.use("/gear", gearRouter);
+router.use("/provider", providerRouter);
 router.use("/rentals", rentalOrderRouter);
 router.use("/reviews", reviewRouter);
 
