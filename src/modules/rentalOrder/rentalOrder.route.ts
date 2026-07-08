@@ -28,20 +28,6 @@ router.get(
 );
 
 router.get(
-  "/provider/all",
-  authenticate,
-  authorize(Role.PROVIDER),
-  rentalOrderController.getProviderOrders,
-);
-
-router.patch(
-  "/provider/:id",
-  authenticate,
-  authorize(Role.PROVIDER),
-  rentalOrderController.updateRentalOrderStatus,
-);
-
-router.get(
   "/admin/all",
   authenticate,
   authorize(Role.ADMIN),
