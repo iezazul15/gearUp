@@ -1,7 +1,7 @@
 {
   "name": "GearUp",
   "version": "1.0.0",
-  "description": "This is assignment 4 which mainly focuses on backend development with prisma and express",
+  "description": "This is a RESTful API which mainly focuses on backend development with prisma and express",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch ./src/server.ts",
