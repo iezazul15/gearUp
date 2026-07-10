@@ -53,6 +53,14 @@ if (!process.env.JWT_REFRESH_TOKEN_EXPIRES_IN) {
   );
 }
 
+if (!process.env.STORE_ID) {
+  throw new Error("STORE_ID is not defined in the environment variables");
+}
+
+if (!process.env.STORE_PASSWORD) {
+  throw new Error("STORE_PASSWORD is not defined in the environment variables");
+}
+
 const config = {
   database_url: process.env.DATABASE_URL,
   port: process.env.PORT || 8000,
@@ -63,6 +71,8 @@ const config = {
   jwt_access_token_expires_in: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,
   jwt_refresh_token_secret: process.env.JWT_REFRESH_TOKEN_SECRET!,
   jwt_refresh_token_expires_in: process.env.JWT_REFRESH_TOKEN_EXPIRES_IN,
+  store_id: process.env.STORE_ID!,
+  store_password: process.env.STORE_PASSWORD!,
 };
 
 export default config;
