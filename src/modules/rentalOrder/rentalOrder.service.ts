@@ -30,40 +30,6 @@ const buildRentalOrderInclude = {
   reviews: true,
 } as const;
 
-const getRentalOrdersByCustomer = async (customerId: string) => {
-  return prisma.rentalOrder.findMany({
-    where: {
-      customerId,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    include: buildRentalOrderInclude,
-  });
-};
-
-const getRentalOrderById = async (id: string, customerId?: string) => {
-  const rentalOrder = await prisma.rentalOrder.findUnique({
-    where: {
-      id,
-    },
-    include: buildRentalOrderInclude,
-  });
-
-  if (!rentalOrder) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Rental order not found");
-  }
-
-  if (customerId && rentalOrder.customerId !== customerId) {
-    throw new ApiError(
-      httpStatus.FORBIDDEN,
-      "You cannot access this rental order",
-    );
-  }
-
-  return rentalOrder;
-};
-
 const createRentalOrder = async (
   customerId: string,
   payload: ICreateRentalOrderPayload,
@@ -147,6 +113,40 @@ const createRentalOrder = async (
     },
     include: buildRentalOrderInclude,
   });
+
+  return rentalOrder;
+};
+
+const getRentalOrdersByCustomer = async (customerId: string) => {
+  return prisma.rentalOrder.findMany({
+    where: {
+      customerId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: buildRentalOrderInclude,
+  });
+};
+
+const getRentalOrderById = async (id: string, customerId?: string) => {
+  const rentalOrder = await prisma.rentalOrder.findUnique({
+    where: {
+      id,
+    },
+    include: buildRentalOrderInclude,
+  });
+
+  if (!rentalOrder) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Rental order not found");
+  }
+
+  if (customerId && rentalOrder.customerId !== customerId) {
+    throw new ApiError(
+      httpStatus.FORBIDDEN,
+      "You cannot access this rental order",
+    );
+  }
 
   return rentalOrder;
 };
