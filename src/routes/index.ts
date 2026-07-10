@@ -7,6 +7,7 @@ import { gearRouter } from "../modules/gear/gear.route";
 import { providerRouter } from "../modules/provider/provider.route";
 import { rentalOrderRouter } from "../modules/rentalOrder/rentalOrder.route";
 import { reviewRouter } from "../modules/review/review.route";
+import { paymentRouter } from "../modules/payment/payment.route";
 import ApiError from "../utils/ApiError";
 import ApiResponse from "../utils/ApiResponse";
 import asyncHandler from "../utils/asyncHandler";
@@ -31,6 +32,7 @@ router.use("/gear", gearRouter);
 router.use("/provider", providerRouter);
 router.use("/rentals", rentalOrderRouter);
 router.use("/reviews", reviewRouter);
+router.use("/payments", paymentRouter);
 
 // Handle 404 errors for undefined routes
 router.use(
