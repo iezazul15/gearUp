@@ -19,7 +19,7 @@ enum RentalStatus {
 }
 
 enum PaymentProvider {
-  STRIPE
+  SSLCOMMERZ
 }
 
 enum PaymentStatus {

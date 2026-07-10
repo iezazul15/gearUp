@@ -28,12 +28,12 @@ export type AggregateRentalOrderItem = {
 
 export type RentalOrderItemAvgAggregateOutputType = {
   quantity: number | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
 }
 
 export type RentalOrderItemSumAggregateOutputType = {
   quantity: number | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
 }
 
 export type RentalOrderItemMinAggregateOutputType = {
@@ -41,7 +41,7 @@ export type RentalOrderItemMinAggregateOutputType = {
   rentalOrderId: string | null
   gearItemId: string | null
   quantity: number | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
 }
 
 export type RentalOrderItemMaxAggregateOutputType = {
@@ -49,7 +49,7 @@ export type RentalOrderItemMaxAggregateOutputType = {
   rentalOrderId: string | null
   gearItemId: string | null
   quantity: number | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
 }
 
 export type RentalOrderItemCountAggregateOutputType = {
@@ -188,7 +188,7 @@ export type RentalOrderItemGroupByOutputType = {
   rentalOrderId: string
   gearItemId: string
   quantity: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal
   _count: RentalOrderItemCountAggregateOutputType | null
   _avg: RentalOrderItemAvgAggregateOutputType | null
   _sum: RentalOrderItemSumAggregateOutputType | null
@@ -219,7 +219,7 @@ export type RentalOrderItemWhereInput = {
   rentalOrderId?: Prisma.StringFilter<"RentalOrderItem"> | string
   gearItemId?: Prisma.StringFilter<"RentalOrderItem"> | string
   quantity?: Prisma.IntFilter<"RentalOrderItem"> | number
-  pricePerDay?: Prisma.FloatFilter<"RentalOrderItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"RentalOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder?: Prisma.XOR<Prisma.RentalOrderScalarRelationFilter, Prisma.RentalOrderWhereInput>
   gearItem?: Prisma.XOR<Prisma.GearItemScalarRelationFilter, Prisma.GearItemWhereInput>
 }
@@ -243,7 +243,7 @@ export type RentalOrderItemWhereUniqueInput = Prisma.AtLeast<{
   rentalOrderId?: Prisma.StringFilter<"RentalOrderItem"> | string
   gearItemId?: Prisma.StringFilter<"RentalOrderItem"> | string
   quantity?: Prisma.IntFilter<"RentalOrderItem"> | number
-  pricePerDay?: Prisma.FloatFilter<"RentalOrderItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"RentalOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder?: Prisma.XOR<Prisma.RentalOrderScalarRelationFilter, Prisma.RentalOrderWhereInput>
   gearItem?: Prisma.XOR<Prisma.GearItemScalarRelationFilter, Prisma.GearItemWhereInput>
 }, "id" | "rentalOrderId_gearItemId">
@@ -269,13 +269,13 @@ export type RentalOrderItemScalarWhereWithAggregatesInput = {
   rentalOrderId?: Prisma.StringWithAggregatesFilter<"RentalOrderItem"> | string
   gearItemId?: Prisma.StringWithAggregatesFilter<"RentalOrderItem"> | string
   quantity?: Prisma.IntWithAggregatesFilter<"RentalOrderItem"> | number
-  pricePerDay?: Prisma.FloatWithAggregatesFilter<"RentalOrderItem"> | number
+  pricePerDay?: Prisma.DecimalWithAggregatesFilter<"RentalOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateInput = {
   id?: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder: Prisma.RentalOrderCreateNestedOneWithoutItemsInput
   gearItem: Prisma.GearItemCreateNestedOneWithoutRentalItemsInput
 }
@@ -285,13 +285,13 @@ export type RentalOrderItemUncheckedCreateInput = {
   rentalOrderId: string
   gearItemId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder?: Prisma.RentalOrderUpdateOneRequiredWithoutItemsNestedInput
   gearItem?: Prisma.GearItemUpdateOneRequiredWithoutRentalItemsNestedInput
 }
@@ -301,7 +301,7 @@ export type RentalOrderItemUncheckedUpdateInput = {
   rentalOrderId?: Prisma.StringFieldUpdateOperationsInput | string
   gearItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateManyInput = {
@@ -309,13 +309,13 @@ export type RentalOrderItemCreateManyInput = {
   rentalOrderId: string
   gearItemId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUncheckedUpdateManyInput = {
@@ -323,7 +323,7 @@ export type RentalOrderItemUncheckedUpdateManyInput = {
   rentalOrderId?: Prisma.StringFieldUpdateOperationsInput | string
   gearItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemListRelationFilter = {
@@ -462,7 +462,7 @@ export type RentalOrderItemUncheckedUpdateManyWithoutRentalOrderNestedInput = {
 export type RentalOrderItemCreateWithoutGearItemInput = {
   id?: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder: Prisma.RentalOrderCreateNestedOneWithoutItemsInput
 }
 
@@ -470,7 +470,7 @@ export type RentalOrderItemUncheckedCreateWithoutGearItemInput = {
   id?: string
   rentalOrderId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateOrConnectWithoutGearItemInput = {
@@ -507,13 +507,13 @@ export type RentalOrderItemScalarWhereInput = {
   rentalOrderId?: Prisma.StringFilter<"RentalOrderItem"> | string
   gearItemId?: Prisma.StringFilter<"RentalOrderItem"> | string
   quantity?: Prisma.IntFilter<"RentalOrderItem"> | number
-  pricePerDay?: Prisma.FloatFilter<"RentalOrderItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"RentalOrderItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateWithoutRentalOrderInput = {
   id?: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   gearItem: Prisma.GearItemCreateNestedOneWithoutRentalItemsInput
 }
 
@@ -521,7 +521,7 @@ export type RentalOrderItemUncheckedCreateWithoutRentalOrderInput = {
   id?: string
   gearItemId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateOrConnectWithoutRentalOrderInput = {
@@ -554,13 +554,13 @@ export type RentalOrderItemCreateManyGearItemInput = {
   id?: string
   rentalOrderId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUpdateWithoutGearItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   rentalOrder?: Prisma.RentalOrderUpdateOneRequiredWithoutItemsNestedInput
 }
 
@@ -568,27 +568,27 @@ export type RentalOrderItemUncheckedUpdateWithoutGearItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rentalOrderId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUncheckedUpdateManyWithoutGearItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   rentalOrderId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemCreateManyRentalOrderInput = {
   id?: string
   gearItemId: string
   quantity?: number
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUpdateWithoutRentalOrderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   gearItem?: Prisma.GearItemUpdateOneRequiredWithoutRentalItemsNestedInput
 }
 
@@ -596,14 +596,14 @@ export type RentalOrderItemUncheckedUpdateWithoutRentalOrderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   gearItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RentalOrderItemUncheckedUpdateManyWithoutRentalOrderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   gearItemId?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -671,7 +671,7 @@ export type $RentalOrderItemPayload<ExtArgs extends runtime.Types.Extensions.Int
     rentalOrderId: string
     gearItemId: string
     quantity: number
-    pricePerDay: number
+    pricePerDay: runtime.Decimal
   }, ExtArgs["result"]["rentalOrderItem"]>
   composites: {}
 }
@@ -1101,7 +1101,7 @@ export interface RentalOrderItemFieldRefs {
   readonly rentalOrderId: Prisma.FieldRef<"RentalOrderItem", 'String'>
   readonly gearItemId: Prisma.FieldRef<"RentalOrderItem", 'String'>
   readonly quantity: Prisma.FieldRef<"RentalOrderItem", 'Int'>
-  readonly pricePerDay: Prisma.FieldRef<"RentalOrderItem", 'Float'>
+  readonly pricePerDay: Prisma.FieldRef<"RentalOrderItem", 'Decimal'>
 }
     
 

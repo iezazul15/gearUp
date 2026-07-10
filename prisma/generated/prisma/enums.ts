@@ -39,7 +39,7 @@ export type RentalStatus = (typeof RentalStatus)[keyof typeof RentalStatus]
 
 
 export const PaymentProvider = {
-  STRIPE: 'STRIPE'
+  SSLCOMMERZ: 'SSLCOMMERZ'
 } as const
 
 export type PaymentProvider = (typeof PaymentProvider)[keyof typeof PaymentProvider]

@@ -5,8 +5,8 @@ model Payment {
   rentalOrderId String
   rentalOrder   RentalOrder @relation(fields: [rentalOrderId], references: [id])
 
-  amount Float
-  method PaymentProvider @default(STRIPE)
+  amount Decimal         @db.Decimal(10, 2)
+  method PaymentProvider @default(SSLCOMMERZ)
   status PaymentStatus   @default(PENDING)
   paidAt DateTime?
 

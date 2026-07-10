@@ -3,7 +3,7 @@ model GearItem {
   name        String
   description String?
   brand       String?
-  pricePerDay Float
+  pricePerDay Decimal @db.Decimal(10, 2)
   stock       Int     @default(1)
   isAvailable Boolean @default(true)
   imageUrl    String?

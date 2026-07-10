@@ -27,12 +27,12 @@ export type AggregateGearItem = {
 }
 
 export type GearItemAvgAggregateOutputType = {
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
   stock: number | null
 }
 
 export type GearItemSumAggregateOutputType = {
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
   stock: number | null
 }
 
@@ -41,7 +41,7 @@ export type GearItemMinAggregateOutputType = {
   name: string | null
   description: string | null
   brand: string | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
   stock: number | null
   isAvailable: boolean | null
   imageUrl: string | null
@@ -56,7 +56,7 @@ export type GearItemMaxAggregateOutputType = {
   name: string | null
   description: string | null
   brand: string | null
-  pricePerDay: number | null
+  pricePerDay: runtime.Decimal | null
   stock: number | null
   isAvailable: boolean | null
   imageUrl: string | null
@@ -230,7 +230,7 @@ export type GearItemGroupByOutputType = {
   name: string
   description: string | null
   brand: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal
   stock: number
   isAvailable: boolean
   imageUrl: string | null
@@ -268,7 +268,7 @@ export type GearItemWhereInput = {
   name?: Prisma.StringFilter<"GearItem"> | string
   description?: Prisma.StringNullableFilter<"GearItem"> | string | null
   brand?: Prisma.StringNullableFilter<"GearItem"> | string | null
-  pricePerDay?: Prisma.FloatFilter<"GearItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"GearItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"GearItem"> | number
   isAvailable?: Prisma.BoolFilter<"GearItem"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"GearItem"> | string | null
@@ -309,7 +309,7 @@ export type GearItemWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"GearItem"> | string
   description?: Prisma.StringNullableFilter<"GearItem"> | string | null
   brand?: Prisma.StringNullableFilter<"GearItem"> | string | null
-  pricePerDay?: Prisma.FloatFilter<"GearItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"GearItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"GearItem"> | number
   isAvailable?: Prisma.BoolFilter<"GearItem"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"GearItem"> | string | null
@@ -351,7 +351,7 @@ export type GearItemScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"GearItem"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"GearItem"> | string | null
   brand?: Prisma.StringNullableWithAggregatesFilter<"GearItem"> | string | null
-  pricePerDay?: Prisma.FloatWithAggregatesFilter<"GearItem"> | number
+  pricePerDay?: Prisma.DecimalWithAggregatesFilter<"GearItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntWithAggregatesFilter<"GearItem"> | number
   isAvailable?: Prisma.BoolWithAggregatesFilter<"GearItem"> | boolean
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"GearItem"> | string | null
@@ -366,7 +366,7 @@ export type GearItemCreateInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -383,7 +383,7 @@ export type GearItemUncheckedCreateInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -400,7 +400,7 @@ export type GearItemUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -417,7 +417,7 @@ export type GearItemUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -434,7 +434,7 @@ export type GearItemCreateManyInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -449,7 +449,7 @@ export type GearItemUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -462,7 +462,7 @@ export type GearItemUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -584,12 +584,12 @@ export type GearItemUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.GearItemScalarWhereInput | Prisma.GearItemScalarWhereInput[]
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -679,7 +679,7 @@ export type GearItemCreateWithoutCategoryInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -695,7 +695,7 @@ export type GearItemUncheckedCreateWithoutCategoryInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -740,7 +740,7 @@ export type GearItemScalarWhereInput = {
   name?: Prisma.StringFilter<"GearItem"> | string
   description?: Prisma.StringNullableFilter<"GearItem"> | string | null
   brand?: Prisma.StringNullableFilter<"GearItem"> | string | null
-  pricePerDay?: Prisma.FloatFilter<"GearItem"> | number
+  pricePerDay?: Prisma.DecimalFilter<"GearItem"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFilter<"GearItem"> | number
   isAvailable?: Prisma.BoolFilter<"GearItem"> | boolean
   imageUrl?: Prisma.StringNullableFilter<"GearItem"> | string | null
@@ -755,7 +755,7 @@ export type GearItemCreateWithoutRentalItemsInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -771,7 +771,7 @@ export type GearItemUncheckedCreateWithoutRentalItemsInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -803,7 +803,7 @@ export type GearItemUpdateWithoutRentalItemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -819,7 +819,7 @@ export type GearItemUncheckedUpdateWithoutRentalItemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -835,7 +835,7 @@ export type GearItemCreateWithoutReviewsInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -851,7 +851,7 @@ export type GearItemUncheckedCreateWithoutReviewsInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -883,7 +883,7 @@ export type GearItemUpdateWithoutReviewsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -899,7 +899,7 @@ export type GearItemUncheckedUpdateWithoutReviewsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -915,7 +915,7 @@ export type GearItemCreateWithoutProviderInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -931,7 +931,7 @@ export type GearItemUncheckedCreateWithoutProviderInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -973,7 +973,7 @@ export type GearItemCreateManyCategoryInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -987,7 +987,7 @@ export type GearItemUpdateWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1003,7 +1003,7 @@ export type GearItemUncheckedUpdateWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1019,7 +1019,7 @@ export type GearItemUncheckedUpdateManyWithoutCategoryInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1033,7 +1033,7 @@ export type GearItemCreateManyProviderInput = {
   name: string
   description?: string | null
   brand?: string | null
-  pricePerDay: number
+  pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: number
   isAvailable?: boolean
   imageUrl?: string | null
@@ -1047,7 +1047,7 @@ export type GearItemUpdateWithoutProviderInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1063,7 +1063,7 @@ export type GearItemUncheckedUpdateWithoutProviderInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1079,7 +1079,7 @@ export type GearItemUncheckedUpdateManyWithoutProviderInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pricePerDay?: Prisma.FloatFieldUpdateOperationsInput | number
+  pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   stock?: Prisma.IntFieldUpdateOperationsInput | number
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1227,7 +1227,7 @@ export type $GearItemPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     name: string
     description: string | null
     brand: string | null
-    pricePerDay: number
+    pricePerDay: runtime.Decimal
     stock: number
     isAvailable: boolean
     imageUrl: string | null
@@ -1666,7 +1666,7 @@ export interface GearItemFieldRefs {
   readonly name: Prisma.FieldRef<"GearItem", 'String'>
   readonly description: Prisma.FieldRef<"GearItem", 'String'>
   readonly brand: Prisma.FieldRef<"GearItem", 'String'>
-  readonly pricePerDay: Prisma.FieldRef<"GearItem", 'Float'>
+  readonly pricePerDay: Prisma.FieldRef<"GearItem", 'Decimal'>
   readonly stock: Prisma.FieldRef<"GearItem", 'Int'>
   readonly isAvailable: Prisma.FieldRef<"GearItem", 'Boolean'>
   readonly imageUrl: Prisma.FieldRef<"GearItem", 'String'>

@@ -27,11 +27,11 @@ export type AggregateRentalOrder = {
 }
 
 export type RentalOrderAvgAggregateOutputType = {
-  totalAmount: number | null
+  totalAmount: runtime.Decimal | null
 }
 
 export type RentalOrderSumAggregateOutputType = {
-  totalAmount: number | null
+  totalAmount: runtime.Decimal | null
 }
 
 export type RentalOrderMinAggregateOutputType = {
@@ -40,7 +40,7 @@ export type RentalOrderMinAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   status: $Enums.RentalStatus | null
-  totalAmount: number | null
+  totalAmount: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -51,7 +51,7 @@ export type RentalOrderMaxAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   status: $Enums.RentalStatus | null
-  totalAmount: number | null
+  totalAmount: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -203,7 +203,7 @@ export type RentalOrderGroupByOutputType = {
   startDate: Date
   endDate: Date
   status: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal
   createdAt: Date
   updatedAt: Date
   _count: RentalOrderCountAggregateOutputType | null
@@ -237,7 +237,7 @@ export type RentalOrderWhereInput = {
   startDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   status?: Prisma.EnumRentalStatusFilter<"RentalOrder"> | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFilter<"RentalOrder"> | number
+  totalAmount?: Prisma.DecimalFilter<"RentalOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   customer?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -270,7 +270,7 @@ export type RentalOrderWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   status?: Prisma.EnumRentalStatusFilter<"RentalOrder"> | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFilter<"RentalOrder"> | number
+  totalAmount?: Prisma.DecimalFilter<"RentalOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   customer?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -304,7 +304,7 @@ export type RentalOrderScalarWhereWithAggregatesInput = {
   startDate?: Prisma.DateTimeWithAggregatesFilter<"RentalOrder"> | Date | string
   endDate?: Prisma.DateTimeWithAggregatesFilter<"RentalOrder"> | Date | string
   status?: Prisma.EnumRentalStatusWithAggregatesFilter<"RentalOrder"> | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatWithAggregatesFilter<"RentalOrder"> | number
+  totalAmount?: Prisma.DecimalWithAggregatesFilter<"RentalOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RentalOrder"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RentalOrder"> | Date | string
 }
@@ -314,7 +314,7 @@ export type RentalOrderCreateInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.UserCreateNestedOneWithoutRentalOrdersInput
@@ -329,7 +329,7 @@ export type RentalOrderUncheckedCreateInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.RentalOrderItemUncheckedCreateNestedManyWithoutRentalOrderInput
@@ -342,7 +342,7 @@ export type RentalOrderUpdateInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.UserUpdateOneRequiredWithoutRentalOrdersNestedInput
@@ -357,7 +357,7 @@ export type RentalOrderUncheckedUpdateInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.RentalOrderItemUncheckedUpdateManyWithoutRentalOrderNestedInput
@@ -371,7 +371,7 @@ export type RentalOrderCreateManyInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -381,7 +381,7 @@ export type RentalOrderUpdateManyMutationInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -392,7 +392,7 @@ export type RentalOrderUncheckedUpdateManyInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -546,7 +546,7 @@ export type RentalOrderCreateWithoutPaymentsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.UserCreateNestedOneWithoutRentalOrdersInput
@@ -560,7 +560,7 @@ export type RentalOrderUncheckedCreateWithoutPaymentsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.RentalOrderItemUncheckedCreateNestedManyWithoutRentalOrderInput
@@ -588,7 +588,7 @@ export type RentalOrderUpdateWithoutPaymentsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.UserUpdateOneRequiredWithoutRentalOrdersNestedInput
@@ -602,7 +602,7 @@ export type RentalOrderUncheckedUpdateWithoutPaymentsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.RentalOrderItemUncheckedUpdateManyWithoutRentalOrderNestedInput
@@ -614,7 +614,7 @@ export type RentalOrderCreateWithoutItemsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.UserCreateNestedOneWithoutRentalOrdersInput
@@ -628,7 +628,7 @@ export type RentalOrderUncheckedCreateWithoutItemsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutRentalOrderInput
@@ -656,7 +656,7 @@ export type RentalOrderUpdateWithoutItemsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.UserUpdateOneRequiredWithoutRentalOrdersNestedInput
@@ -670,7 +670,7 @@ export type RentalOrderUncheckedUpdateWithoutItemsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutRentalOrderNestedInput
@@ -682,7 +682,7 @@ export type RentalOrderCreateWithoutReviewsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.UserCreateNestedOneWithoutRentalOrdersInput
@@ -696,7 +696,7 @@ export type RentalOrderUncheckedCreateWithoutReviewsInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.RentalOrderItemUncheckedCreateNestedManyWithoutRentalOrderInput
@@ -724,7 +724,7 @@ export type RentalOrderUpdateWithoutReviewsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.UserUpdateOneRequiredWithoutRentalOrdersNestedInput
@@ -738,7 +738,7 @@ export type RentalOrderUncheckedUpdateWithoutReviewsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.RentalOrderItemUncheckedUpdateManyWithoutRentalOrderNestedInput
@@ -750,7 +750,7 @@ export type RentalOrderCreateWithoutCustomerInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.RentalOrderItemCreateNestedManyWithoutRentalOrderInput
@@ -763,7 +763,7 @@ export type RentalOrderUncheckedCreateWithoutCustomerInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
   items?: Prisma.RentalOrderItemUncheckedCreateNestedManyWithoutRentalOrderInput
@@ -806,7 +806,7 @@ export type RentalOrderScalarWhereInput = {
   startDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   status?: Prisma.EnumRentalStatusFilter<"RentalOrder"> | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFilter<"RentalOrder"> | number
+  totalAmount?: Prisma.DecimalFilter<"RentalOrder"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RentalOrder"> | Date | string
 }
@@ -816,7 +816,7 @@ export type RentalOrderCreateManyCustomerInput = {
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RentalStatus
-  totalAmount: number
+  totalAmount: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -826,7 +826,7 @@ export type RentalOrderUpdateWithoutCustomerInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.RentalOrderItemUpdateManyWithoutRentalOrderNestedInput
@@ -839,7 +839,7 @@ export type RentalOrderUncheckedUpdateWithoutCustomerInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   items?: Prisma.RentalOrderItemUncheckedUpdateManyWithoutRentalOrderNestedInput
@@ -852,7 +852,7 @@ export type RentalOrderUncheckedUpdateManyWithoutCustomerInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRentalStatusFieldUpdateOperationsInput | $Enums.RentalStatus
-  totalAmount?: Prisma.FloatFieldUpdateOperationsInput | number
+  totalAmount?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -977,7 +977,7 @@ export type $RentalOrderPayload<ExtArgs extends runtime.Types.Extensions.Interna
     startDate: Date
     endDate: Date
     status: $Enums.RentalStatus
-    totalAmount: number
+    totalAmount: runtime.Decimal
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["rentalOrder"]>
@@ -1412,7 +1412,7 @@ export interface RentalOrderFieldRefs {
   readonly startDate: Prisma.FieldRef<"RentalOrder", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"RentalOrder", 'DateTime'>
   readonly status: Prisma.FieldRef<"RentalOrder", 'RentalStatus'>
-  readonly totalAmount: Prisma.FieldRef<"RentalOrder", 'Float'>
+  readonly totalAmount: Prisma.FieldRef<"RentalOrder", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"RentalOrder", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"RentalOrder", 'DateTime'>
 }
