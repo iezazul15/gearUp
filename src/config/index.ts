@@ -61,7 +61,7 @@ if (!process.env.STORE_PASSWORD) {
   throw new Error("STORE_PASSWORD is not defined in the environment variables");
 }
 
-if (!process.env.STORE_URL) {
+if (!process.env.SSLCOMMERZ_BASE_URL) {
   throw new Error("STORE_URL is not defined in the environment variables");
 }
 
@@ -77,7 +77,7 @@ const config = {
   jwt_refresh_token_expires_in: process.env.JWT_REFRESH_TOKEN_EXPIRES_IN,
   store_id: process.env.STORE_ID!,
   store_password: process.env.STORE_PASSWORD!,
-  store_url: process.env.STORE_URL!,
+  sslcommerz_base_url: process.env.SSLCOMMERZ_BASE_URL!,
 };
 
 export default config;
