@@ -18,7 +18,10 @@ app.use(
 );
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Welcome to the API");
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the API",
+  });
 });
 
 app.use("/api", router);
