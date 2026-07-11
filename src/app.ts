@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 import config from "./config";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import router from "./routes";
@@ -16,6 +16,10 @@ app.use(
     credentials: true,
   }),
 );
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to the API");
+});
 
 app.use("/api", router);
 
