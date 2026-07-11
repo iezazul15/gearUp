@@ -11,13 +11,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.6.0",
-      "onFail": "download"
-    }
-  },
   "type": "module",
   "devDependencies": {
     "@types/cookie-parser": "^1.4.10",
@@ -43,5 +36,12 @@
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.22.0",
     "tsup": "^8.5.1"
+  },
+  "allowScripts": {
+    "@prisma/engines@7.8.0": true,
+    "prisma@7.8.0": true,
+    "esbuild@0.27.7": true,
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true
   }
 }
