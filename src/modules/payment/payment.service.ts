@@ -163,6 +163,9 @@ const handleVerification = async (
       });
 
       return { code: httpStatus.BAD_REQUEST, message: "Invalid transaction" };
+
+    default:
+      throw new ApiError(httpStatus.BAD_REQUEST, "Payment verification failed");
   }
 };
 
