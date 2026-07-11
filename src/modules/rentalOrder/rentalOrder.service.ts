@@ -1,4 +1,5 @@
 import httpStatus from "http-status";
+import { GearItem } from "../../../prisma/generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 import ApiError from "../../utils/ApiError";
 import {
@@ -104,7 +105,7 @@ const createRentalOrder = async (
       endDate,
       totalAmount,
       items: {
-        create: gearItems.map((gearItem) => ({
+        create: gearItems.map((gearItem: GearItem) => ({
           gearItemId: gearItem.id,
           quantity: quantityMap.get(gearItem.id) || 1,
           pricePerDay: gearItem.pricePerDay,

@@ -1,9 +1,9 @@
-import { prisma } from "../../lib/prisma";
-import httpStatus from "http-status";
-import ApiError from "../../utils/ApiError";
-import config from "../../config";
-import { SSLCommerzPayment } from "./payment.interface";
 import axios from "axios";
+import httpStatus from "http-status";
+import config from "../../config";
+import { prisma } from "../../lib/prisma";
+import ApiError from "../../utils/ApiError";
+import { SSLCommerzPayment } from "./payment.interface";
 
 const createPaymentIntent = async (userId: string, rentalOrderId: string) => {
   const rentalOrder = await prisma.rentalOrder.findUnique({
@@ -39,7 +39,7 @@ const createPaymentIntent = async (userId: string, rentalOrderId: string) => {
     );
 
   const total_amount = rentalOrder.items.reduce(
-    (sum, item) => sum + Number(item.gearItem.pricePerDay) * item.quantity,
+    (sum, item) => sum + item.gearItem.pricePerDay.toNumber() * item.quantity,
     0,
   );
 
