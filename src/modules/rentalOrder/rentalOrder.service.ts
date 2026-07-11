@@ -94,7 +94,7 @@ const createRentalOrder = async (
       );
     }
 
-    totalAmount += gearItem.pricePerDay * quantity;
+    totalAmount += gearItem.pricePerDay.toNumber() * quantity;
   }
 
   const rentalOrder = await prisma.rentalOrder.create({
