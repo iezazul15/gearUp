@@ -152,6 +152,16 @@ const handleVerification = async (
       return { code: httpStatus.OK, message: "Payment already validated" };
 
     case "INVALID_TRANSACTION":
+      await prisma.payment.create({
+        data: {
+          rentalOrderId: order_id,
+          transactionId: tran_id,
+          amount: payload.amount,
+          status: "FAILED",
+          paidAt: new Date(payload.tran_date),
+        },
+      });
+
       return { code: httpStatus.BAD_REQUEST, message: "Invalid transaction" };
   }
 };
